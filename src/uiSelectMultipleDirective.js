@@ -135,6 +135,7 @@ uis.directive('uiSelectMultiple', ['uiSelectMinErr','$timeout', function(uiSelec
       //Watch for external model changes 
       scope.$watchCollection(function(){ return ngModel.$modelValue; }, function(newValue, oldValue) {
         if (oldValue != newValue){
+          $select.selected = ngModel.$modelValue;
           ngModel.$modelValue = null; //Force scope model value and ngModel value to be out of sync to re-run formatters
           $selectMultiple.refreshComponent();
         }
